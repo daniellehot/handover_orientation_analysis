@@ -42,7 +42,7 @@ def get_mean_orientation(class_id):
     return mean_orientation
 
 def get_observations(class_id):
-    path = "/home/daniel/Transformations/transformations_parsed"
+    path = "/home/daniel/iiwa_ws/src/handover_orientation_analysis/observations"
     root, dirs, _ = next(os.walk(path))
     for dir in dirs:
         if dir == class_id:
@@ -68,7 +68,7 @@ def rotate_frame(rotation):
     return rotated_frame
 
 def get_classes():
-    path = "/home/daniel/Transformations/transformations_parsed"
+    path = "/home/daniel/iiwa_ws/src/handover_orientation_analysis/observations"
     root, dirs, _ = next(os.walk(path))
     return dirs
 

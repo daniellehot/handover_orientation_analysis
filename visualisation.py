@@ -50,7 +50,7 @@ if __name__ == '__main__':
     with open('/home/daniel/iiwa_ws/src/ROB10/mean_handover_orientation/mean_handover_orientations.txt') as f:
         lines = f.readlines()
 
-    path = "/home/daniel/Transformations/transformations_parsed"
+    path = "/home/daniel/iiwa_ws/src/handover_orientation_analysis/observations"
     output_path = "/home/daniel/iiwa_ws/src/ROB10/mean_handover_orientation"
     root, dirs, _ = next(os.walk(path))
     for dir in dirs:

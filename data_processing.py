@@ -77,7 +77,7 @@ def find_solution(observations):
     return min_sum_solution
 
 if __name__ == '__main__':
-    path = "/home/daniel/Transformations/transformations_parsed"
+    path = "/home/daniel/iiwa_ws/src/handover_orientation_analysis/observations"
     output_path = "/home/daniel/iiwa_ws/src/ROB10/mean_handover_orientation/mean_handover_orientations.txt"
     with open(output_path, 'w') as f:
         f.truncate()

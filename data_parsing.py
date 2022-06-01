@@ -4,7 +4,7 @@ import shutil
 
 if __name__ == '__main__':
     path = "/home/daniel/Transformations/Transformations"
-    path_parsed = "/home/daniel/Transformations/transformations_parsed"
+    path_parsed = "/home/daniel/iiwa_ws/src/handover_orientation_analysis/observations"
     root, dirs, _ = next(os.walk(path))
     index = 0
     for dir in dirs:
