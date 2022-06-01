@@ -7,12 +7,8 @@ def get_quat_from_matrix(transformation):
     #print(transformation)
     rot_mat = np.zeros((3,3))
     rot_mat = transformation[:3, :3]
-    #for i in range(0, 3):
-        #for j in range(0, 3):
-            #rot_mat[i,j] = transformation[i,j]
     #print(rot_mat)
     q = R.from_matrix(rot_mat).as_quat()
-    # MAY NOT BE NECESSARY, SEEMS TO BE NORMALIZED
     q_mag = np.linalg.norm(q)
     q = q/q_mag
     return q
@@ -23,7 +19,6 @@ def get_random_quaternion():
     q[1] = np.random.uniform(low=-1.0, high=1.0) #q_y
     q[2] = np.random.uniform(low=-1.0, high=1.0) #q_z
     q[3] = np.random.uniform(low=-1.0, high=1.0) #q_w
-    # normalize quaternion MAY BE UNNECESSARY IF YOU USE quaternion_from_euler()
     q_mag = np.linalg.norm(q)
     q = q/q_mag
     return q
@@ -66,7 +61,6 @@ def find_solution(observations):
             if np.array_equal(min_sum_solution, solution):
                 continue
             else:
-                #print("min_sum_solution != solution")
                 sum = objective_function(solution, observations)
                 if sum < min_sum:
                     min_sum_solution = solution
@@ -87,7 +81,6 @@ if __name__ == '__main__':
         _, _, files = next(os.walk(os.path.join(root,dir)))
         number_of_files = len(files)
         observations = np.zeros((number_of_files, 4))
-        #print(np.shape(observations))
         for i in range(0, number_of_files):
             transformation = np.load(os.path.join(root,dir,files[i]))
             observations[i, :] = get_quat_from_matrix(transformation)
@@ -97,4 +90,3 @@ if __name__ == '__main__':
 
         with open(output_path, 'a') as f:
             f.write(dir + " " + str(solution) + "\n")
-    #print(observations)

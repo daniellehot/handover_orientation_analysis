@@ -1,5 +1,3 @@
-# https://rock-learning.github.io/pytransform3d/index.html
-# https://rock-learning.github.io/pytransform3d/_modules/pytransform3d/transform_manager.html#TransformManager
 import numpy as np
 from scipy.spatial.transform import Rotation as R
 import os
@@ -10,7 +8,6 @@ def fix_transformation(transformation):
     fixed_transformation = np.zeros((4,4))
     fixed_transformation[3,3] = 1
     q = R.from_matrix(transformation[:3, :3]).as_quat()
-    # MAY NOT BE NECESSARY, SEEMS TO BE NORMALIZED
     q_mag = np.linalg.norm(q)
     q = q/q_mag
     fixed_rot_mat = R.from_quat(q).as_matrix()
@@ -21,7 +18,6 @@ def get_quat_from_matrix(transformation):
     rot_mat = np.zeros((3,3))
     rot_mat = transformation[:3, :3]
     q = R.from_matrix(rot_mat).as_quat()
-    # MAY NOT BE NECESSARY, SEEMS TO BE NORMALIZED
     q_mag = np.linalg.norm(q)
     q = q/q_mag
     return q
@@ -63,11 +59,9 @@ if __name__ == '__main__':
             ax = plot_transform(ax, fixed_transformation, **{'linestyle':'--'})
 
         ax = plot_transform(ax, get_the_mean_transformation(dir, lines), **{'lw':8})
-        #ax = tm.plot_frames_in("world", show_name = True)
+
         plt.title(dir, fontsize=40)
         plt.tight_layout()
-        #plt.axis('off')
-        #plt.grid('off')
         ax.set_xticklabels([])
         ax.set_yticklabels([])
         ax.set_zticklabels([])

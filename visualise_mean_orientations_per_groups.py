@@ -14,7 +14,6 @@ def get_mean_orientation(class_name):
         line = line.replace("]","")
         temp = line.split()
         if class_name == temp[0]:
-            #print(temp)
             mean_orientation = temp[1:5]
             for i in range(0,4):
                 mean_orientation[i] = float(mean_orientation[i])
@@ -106,5 +105,3 @@ if __name__ == '__main__':
     fig_AB.savefig("/home/daniel/iiwa_ws/src/ROB10/mean_handover_orientation/figures/group_AB.pdf", bbox_inches = 'tight', pad_inches = 0)
     fig_C.savefig("/home/daniel/iiwa_ws/src/ROB10/mean_handover_orientation/figures/group_C.pdf", bbox_inches = 'tight', pad_inches = 0)
     plt.show()
-    #plt.savefig("/home/daniel/iiwa_ws/src/ROB10/mean_handover_orientation/figures/group_AB.pdf")
-    #plt[1].savefig("/home/daniel/iiwa_ws/src/ROB10/mean_handover_orientation/figures/group_C.pdf")
